@@ -37,7 +37,7 @@ def make_new_student(first_name, last_name, github):
     database and print a confirmation message.
     """
     QUERY = """INSERT INTO Students VALUES (:first_name, :last_name, :github)"""
-    db_cursor = db.session.execute(QUERY, {'first_name': first_name, 'last_name': last_name, 'github': github})
+    db.session.execute(QUERY, {'first_name': first_name, 'last_name': last_name, 'github': github})
     db.session.commit()
 
     print "Successfully added student: %s %s" % (first_name, last_name)
@@ -72,7 +72,7 @@ def get_grade_by_github_title(github, title):
 def assign_grade(github, title, grade):
     """Assign a student a grade on an assignment and print a confirmation."""
     QUERY = """INSERT INTO grades VALUES (:github, :title, :grade)"""
-    db_cursor = db.session.execute(QUERY, {'github': github, 'title': title, 'grade': grade})
+    db.session.execute(QUERY, {'github': github, 'title': title, 'grade': grade})
     db.session.commit()
 
     print "Successfully added grade: %s for project %s for github account %s" % (grade, title, github)    
